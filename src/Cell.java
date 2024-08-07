@@ -4,9 +4,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 public class Cell extends Rectangle{
-  // fields
-  int x;
-  int y;
   static int size = 35;
 
   // constructors
@@ -26,9 +23,10 @@ public class Cell extends Rectangle{
     g.drawRect(x, y, size, size);
   }
 
+  @Override
   public boolean contains(Point p) {
     if(p != null) {
-      return x < p.x && x+size > p.x && y < p.y && y+size > p.y;
+      return super.contains(p);
     } else {
       return false;
     }
