@@ -7,6 +7,6 @@ public class Bird extends Actor{
     }
     
     public void paint(Graphics g){
-        
+        g.setColor(Color.GREEN);
     }
 }
