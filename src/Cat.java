@@ -17,9 +17,33 @@ public class Cat extends Actor {
     face.addPoint(loc.x + 5, loc.y + 15);
     face.addPoint(loc.x + 29, loc.y + 15);
     face.addPoint(loc.x + 17, loc.y + 30);
+    
+    Polygon whiskers1 = new Polygon();
+    whiskers1.addPoint(loc.x + 17, loc.y + 22);
+    whiskers1.addPoint(loc.x + 2, loc.y + 20);
+    Polygon whiskers2 = new Polygon();
+    whiskers2.addPoint(loc.x + 17, loc.y + 25);
+    whiskers2.addPoint(loc.x + 2, loc.y + 25);
+    Polygon whiskers3 = new Polygon();
+    whiskers3.addPoint(loc.x + 17, loc.y + 27);
+    whiskers3.addPoint(loc.x + 2, loc.y + 30);
 
+    Polygon whiskers4 = new Polygon();
+    whiskers1.addPoint(loc.x + 17, loc.y + 22);
+    whiskers1.addPoint(loc.x + 32, loc.y + 20);
+    Polygon whiskers5 = new Polygon();
+    whiskers2.addPoint(loc.x + 17, loc.y + 25);
+    whiskers2.addPoint(loc.x + 32, loc.y + 25);
+    Polygon whiskers6 = new Polygon();
+    whiskers3.addPoint(loc.x + 17, loc.y + 27);
+    whiskers3.addPoint(loc.x + 32, loc.y + 30);
+
+  
     polygons.add(face);
     polygons.add(ear1);
     polygons.add(ear2);
+    polygons.add(whiskers1);
+    polygons.add(whiskers2);
+    polygons.add(whiskers3);
   }
 }
