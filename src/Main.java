@@ -1,5 +1,6 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Point;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,6 +13,11 @@ public class Main extends JFrame {
 
     class Canvas extends JPanel {
       Grid grid = new Grid();
+
+      Point[] mouseTrail = new Point[100];
+        int trailIndex = 0;
+        int trailCount = 0;
+
       public Canvas() {
         setPreferredSize(new Dimension(720, 720));
       }
@@ -19,6 +25,14 @@ public class Main extends JFrame {
       @Override
       public void paint(Graphics g) {
         grid.paint(g, getMousePosition());
+
+        if (getMousePosition() != null) {
+          mouseTrail[trailIndex] = getMousePosition();
+          trailIndex = (trailIndex + 1) % mouseTrail.length; // Move to the next index
+          if (trailCount < mouseTrail.length) {
+              trailCount++;
+          }
+      }
       }
     }
 
