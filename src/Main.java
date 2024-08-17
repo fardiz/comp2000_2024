@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/*Due to being busy with work, and misunderstandings about the due date, I am submitting through iLearn (as instructed by tutor)
+and was unable to show in class. Also, I accidentally misunderstood the question, so the latest commit I have "Fixed the code..."
+is actually the Task 2 requirement, and the commit before named "Task Two" actually ended up being what was required for task one. */
+
 public class Main extends JFrame {
     public static void main(String[] args) throws Exception {
         Main window = new Main();
