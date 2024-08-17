@@ -2,6 +2,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,7 +21,21 @@ public class Main extends JFrame {
 
       public Canvas() {
         setPreferredSize(new Dimension(720, 720));
+
+        addMouseMotionListener(new MouseMotionAdapter() {
+          @Override
+          public void mouseMoved(java.awt.event.MouseEvent e) {
+              addMousePosition(e.getPoint());
+          }
+      });
       }
+
+      public void addMousePosition(Point p) {
+        if (mouseTrail.size() >= TRAIL_SIZE) {
+            mouseTrail.remove(0); // Remove the oldest position
+        }
+        mouseTrail.add(p); // Add the newest position
+    }
 
       @Override
       public void paint(Graphics g) {
