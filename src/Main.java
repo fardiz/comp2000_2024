@@ -17,8 +17,6 @@ public class Main extends JFrame {
         ArrayList<Point> mouseTrail = new ArrayList<>();
         final int TRAIL_SIZE = 100;
         Point lastMousePosition = null;
-        long lastMouseMoveTime = 0;
-        final long INACTIVE_THRESHOLD = 200; // milliseconds
 
         public Canvas() {
             setPreferredSize(new Dimension(720, 720));
@@ -37,7 +35,6 @@ public class Main extends JFrame {
                     mouseTrail.remove(0); // Remove the oldest position
                 }
                 mouseTrail.add(p); // Add the newest position
-                lastMouseMoveTime = System.currentTimeMillis();
             }
             lastMousePosition = p;
         }
@@ -46,25 +43,14 @@ public class Main extends JFrame {
         public void paint(Graphics g) {
             grid.paint(g, getMousePosition());
             paintMouseTrail(g);
-            clearOldTrails(); // Clear old trails if inactive
         }
 
         private void paintMouseTrail(Graphics g) {
-            int alphaStep = 255 / TRAIL_SIZE;
-            for (int i = 0; i < mouseTrail.size(); i++) {
-                Point p = mouseTrail.get(i);
+            for (Point p : mouseTrail) {
                 if (p != null) {
-                    int alpha = (i + 1) * alphaStep;
-                    g.setColor(new java.awt.Color(0, 0, 0, Math.min(alpha, 255))); // semi-transparent black
+                    g.setColor(new java.awt.Color(0, 0, 0, 100)); // semi-transparent black
                     g.fillOval(p.x - 5, p.y - 5, 10, 10); // Draw circle at the mouse position
                 }
-            }
-        }
-
-        private void clearOldTrails() {
-            long currentTime = System.currentTimeMillis();
-            if (currentTime - lastMouseMoveTime > INACTIVE_THRESHOLD) {
-                mouseTrail.clear(); // Clear trails if inactive for too long
             }
         }
     }
