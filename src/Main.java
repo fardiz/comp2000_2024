@@ -40,6 +40,16 @@ public class Main extends JFrame {
       @Override
       public void paint(Graphics g) {
         grid.paint(g, getMousePosition());
+
+        int alphaStep = 255 / TRAIL_SIZE;
+        for (int i = 0; i < mouseTrail.size(); i++) {
+          Point p = mouseTrail.get(i);
+          if (p != null) {
+            int alpha = (i + 1) * alphaStep;
+            g.setColor(new java.awt.Color(0, 0, 0, Math.min(alpha, 255))); // semi-transparent black
+            g.fillOval(p.x - 5, p.y - 5, 10, 10); // Draw circle at the mouse position
+         }
+        }
       }
     }
 
