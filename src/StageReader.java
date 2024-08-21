@@ -7,8 +7,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StageReader {
-  public static Stage readStage(String path) throws IOException {
+  public static Stage readStage(String path){
     Stage stage = new Stage();
+    try{
     Properties props = (new Properties());
     props.load(new FileInputStream(path));
     for(String key: props.stringPropertyNames()) {
@@ -33,6 +34,10 @@ public class StageReader {
           stage.actors.add(new Bird(c));
         }
       }
+    }
+  } 
+    catch (IOException e) {
+      System.exit(0);
     }
     return stage;
   }
