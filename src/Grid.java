@@ -1,5 +1,6 @@
 import java.awt.Graphics;
 import java.awt.Point;
+import java.util.Optional;
 
 public class Grid {
   Cell[][] cells = new Cell[20][20];
@@ -10,6 +11,17 @@ public class Grid {
         cells[i][j] = new Cell(colToLabel(i), j, 10+Cell.size*i, 10+Cell.size*j);
       }
     }
+  }
+
+  public Optional<Cell> cellAtPoint(Point p){
+    for(int i = 0; i < cells.length; i++){
+      for(int j = 0; j < cells[i].length; j++){
+        if(cells[i][j].contains(p)){
+          return Optional.of(cells[i][i]);
+        }
+      }
+    }
+    return Optional.empty();
   }
 
   private char colToLabel(int col) {
