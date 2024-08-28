@@ -5,16 +5,16 @@ import java.awt.Rectangle;
 
 public class Cell extends Rectangle {
   static int size = 35;
-  char col;
+  int col;
   int row;
 
-  public Cell(char inCol, int inRow, int x, int y) {
+  public Cell(int i, int inRow, int x, int y) {
     super(x, y, size, size);
-    col = inCol;
+    col = i;
     row = inRow;
   }
 
-  public void paint(Graphics g, Point mousePos) {
+public void paint(Graphics g, Point mousePos) {
     if(contains(mousePos)) {
       g.setColor(Color.GRAY);
     } else {

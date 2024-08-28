@@ -10,6 +10,7 @@ public abstract class Actor {
   boolean humanPlayer;
   int moves;
   int turns;
+  MoveStrategy strat;
 
   protected Actor(Cell inLoc, Color inColor, Boolean isHuman, int inMoves) {
     loc = inLoc;
